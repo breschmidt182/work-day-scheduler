@@ -6,7 +6,7 @@ body {
 
 textarea{
   background: transparent;
-  border: none;
+  /* border: none; */
   resize: none;
   color: #000000;
   border-left: 1px solid black;
@@ -34,6 +34,7 @@ textarea{
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
+  /* margin-left: 150px; */
 }
 
 .hour {
@@ -57,7 +58,7 @@ textarea{
   color: white;
 }
 
-.saveBtn {
+.save-button {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -65,7 +66,7 @@ textarea{
   color: white;
 }
 
-.saveBtn i:hover {
+.save-button i:hover {
   font-size: 20px;
-  transition: all .3s ease-in-out;
+  transition: all .5s ease-in-out;
 }
