@@ -28,9 +28,8 @@ var timeArray = [
 
 let button = $(".save-button").click(function(event) {
 	var task = $(this).prev().val()
-	var time = $(this).prev().prev().text()
-  localStorage.setItem("task",JSON.stringify(task));
-	localStorage.setItem("time",JSON.stringify(time));
+	var time = $(this).prev().data("content")
+  localStorage.setItem(time,JSON.stringify(task));
 	JSON.parse(localStorage.getItem("task"));
 	JSON.parse(localStorage.getItem("time"));
     console.log("saved");
@@ -59,7 +58,7 @@ function timeOfEvent() {
 
 function getFromLocalStorage() {
 	const timeAndTask = localStorage.getItem('time')
-	document.getElementById('9am').value = timeAndTask;
+	document.querySelector('[data = "content"]') = timeAndTask;
 }
 
 function init() {
