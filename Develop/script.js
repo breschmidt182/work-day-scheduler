@@ -26,13 +26,15 @@ var timeArray = [
 
 
 
-// let button = $(".save-button").click(function(event) {
-// 	var task = $(this).prev().val()
-// 	var time = $(this).prev().prev().text()
-//   localStorage.setItem(time,task)
-
-//     console.log("saved");
-// });
+let button = $(".save-button").click(function(event) {
+	var task = $(this).prev().val()
+	var time = $(this).prev().prev().text()
+  localStorage.setItem("task",JSON.stringify(task));
+	localStorage.setItem("time",JSON.stringify(time));
+	JSON.parse(localStorage.getItem("task"));
+	JSON.parse(localStorage.getItem("time"));
+    console.log("saved");
+});
 
 function timeOfEvent() {
 	var currentTime = moment().hour();
@@ -56,7 +58,8 @@ function timeOfEvent() {
 
 
 function getFromLocalStorage() {
-    $(timeArray)
+	const timeAndTask = localStorage.getItem('time')
+	document.getElementById('9am').value = timeAndTask;
 }
 
 function init() {
