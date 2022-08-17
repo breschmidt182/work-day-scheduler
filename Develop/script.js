@@ -24,25 +24,53 @@ var timeArray = [
     fivePm
 ]
 
-let button = $(".save-button").click(function() {
-    var task = $(this).prev().val()
-    var time = $(this).prev().prev().text()
-    localStorage.setItem(time,task)
-    console.log("saved");
-});
+
+
+// let button = $(".save-button").click(function(event) {
+// 	var task = $(this).prev().val()
+// 	var time = $(this).prev().prev().text()
+//   localStorage.setItem(time,task)
+
+//     console.log("saved");
+// });
+
+function timeOfEvent() {
+	var currentTime = moment().hour();
+
+	$(".time-block").each(function () {
+		const eventTime = parseInt($(this).attr("id").split("hour")[11])
+
+		if (eventTime < currentTime) {
+			$(this).addClass("past")
+		}
+		else if(eventTime == currentTime) {
+			$(this).removeClass("past")
+			$(this).addClass("present")
+		}
+		else {
+			$(this).remove("present")
+			$(this).addClass("future")
+		}
+	})
+}
+
 
 function getFromLocalStorage() {
-    textArea.text = localStorage.getItem("")
+    $(timeArray)
 }
 
 function init() {
     getFromLocalStorage()
-    for (let i=0; i < timeArray.length; i++) {
-        const timeBlock = timeArray[i];
-        console.log(timeBlock);
+  for (let i=0; i < timeArray.length; i++) {
+     const timeBlock = timeArray[i];
+     console.log(timeBlock);
     
-        $(timeArray).children().val
-        localStorage.getItem(timeArray)
+    $(timeArray).children().val
+     localStorage.getItem(timeArray)
+	}
 }
-}
+
+timeOfEvent();
+getFromLocalStorage();
 init();
+
