@@ -25,21 +25,15 @@ var timeArray = [
 ]
 
 
-
-let button = $(".save-button").click(function(event) {
-	var task = $(this).prev().val()
-	var time = $(this).prev().data("content")
-  localStorage.setItem(time,JSON.stringify(task));
-	JSON.parse(localStorage.getItem("task"));
-	JSON.parse(localStorage.getItem("time"));
-    console.log("saved");
-});
-
 function timeOfEvent() {
 	var currentTime = moment().hour();
 
 	$(".time-block").each(function () {
-		const eventTime = parseInt($(this).attr("id").split("hour")[11])
+		let eventTime = parseInt($(this)[0].id)
+		console.log(parseInt($(this)[0].id))
+		if(eventTime >= 1 && eventTime <= 5) {
+			eventTime += 12
+		}
 
 		if (eventTime < currentTime) {
 			$(this).addClass("past")
@@ -50,29 +44,41 @@ function timeOfEvent() {
 		}
 		else {
 			$(this).remove("present")
+			$(this).remove("past")
 			$(this).addClass("future")
 		}
 	})
 }
 
 
-function getFromLocalStorage() {
-	const timeAndTask = localStorage.getItem('time')
-	document.querySelector('[data = "content"]') = timeAndTask;
-}
+// function getFromLocalStorage() {
+// 	const timeAndTask = localStorage.getItem('time')
+// 	$(".description") = localStorage.getItem(id)
+// }
 
 function init() {
-    getFromLocalStorage()
+    // getFromLocalStorage()
+		timeOfEvent();
   for (let i=0; i < timeArray.length; i++) {
-     const timeBlock = timeArray[i];
-     console.log(timeBlock);
+     const timeBlock = timeArray[i][0].id;
+    //  console.log(timeBlock);
     
-    $(timeArray).children().val
-     localStorage.getItem(timeArray)
+    // console.log(timeArray[i].children().children()[1].textContent)
+		timeArray[i].children().children()[1].value = localStorage.getItem(timeBlock)
 	}
+
+	$(".save-button").click(function(event) {
+		var task = $(this).prev()[0].value
+		var time = $(this).prev().prev()[0].textContent
+		// console.log(time)
+		// console.log($(this).prev()[0].value)
+		// console.log($(this).prev().prev()[0].textContent)
+		localStorage.setItem(time,task);
+			// console.log("saved");
+	});
 }
 
-timeOfEvent();
-getFromLocalStorage();
+
+// getFromLocalStorage();
 init();
 
