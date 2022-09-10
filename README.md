@@ -22,7 +22,7 @@ THEN the saved events persist
 This is an app for people with a busy schedule to help them keep track of everthing they have to do in a day. It helps you focus on the day ahead of you and not everything you have to do in the next month. This app is color coded to show you when events have passed, are in progress, and when events are coming up.
 
 # Screenshot
-![](Develop%5C2022-05-17%20(2).png)
+![](./wrkDaySched.png)
 
 # Links
 https://github.com/breschmidt182/work-day-scheduler
